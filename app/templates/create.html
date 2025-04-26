@@ -1,0 +1,58 @@
+{% extends "template.html" %}
+{% block conteudo %}
+
+<h1>Cadastro de Nota Fiscal</h1>
+
+<form id="form" action="/createAction" method="post">
+    <table>
+        <tr>
+            <td>Número:</td>
+            <td><input type="text" name="numero" id="numero" required /></td>
+        </tr>
+        <tr>
+            <td>Comprador:</td>
+            <td><input type="text" name="comprador" id="comprador" required /></td>
+        </tr>
+        <tr>
+            <td>CNPJ:</td>
+            <td><input type="text" name="cnpj" id="cnpj" required /></td>
+        </tr>
+        <tr>
+            <td>Endereço:</td>
+            <td><input type="text" name="endereco" id="endereco" required /></td>
+        </tr>
+        <tr>
+            <td>Telefone:</td>
+            <td><input type="text" name="telefone" id="telefone" required /></td>
+        </tr>
+        <tr>
+            <td>Data:</td>
+            <td><input type="date" name="data" id="data" required /></td>
+        </tr>
+        <tr>
+            <td>Valor:</td>
+            <td><input type="text" name="valor" id="valor" required /></td>
+        </tr>
+        <tr>
+            <td>Itens:</td>
+            <td><textarea name="itens" id="itens" rows="4" cols="50" required></textarea></td>
+        </tr>
+    </table>
+
+    <br>
+    <input type="submit" value="Enviar" />
+    <button type="button" onclick="limparFormulario()">Limpar</button>
+</form>
+
+<script>
+function limparFormulario() {
+    document.querySelectorAll('input, textarea').forEach(function(element) {
+        if (element.type !== "submit" && element.type !== "button" && element.type !== "reset") {
+            element.value = '';
+        }
+    });
+    alert('Todos os campos foram limpos com sucesso!');
+}
+</script>
+
+{% endblock %}

@@ -1,0 +1,60 @@
+{% extends "template.html" %}
+{% block conteudo %}
+
+<h1>Alterar Nota Fiscal</h1>
+
+<form id="form" action="/updateAction" method="post">
+    <input type="hidden" name="_id" value="{{ nota_fiscal._id }}" />
+    <table>
+        <tr>
+            <td>Número:</td>
+            <td><input type="text" name="numero" id="numero" value="{{ nota_fiscal.numero }}" required /></td>
+        </tr>
+        <tr>
+            <td>Comprador:</td>
+            <td><input type="text" name="comprador" id="comprador" value="{{ nota_fiscal.comprador }}" required /></td>
+        </tr>
+        <tr>
+            <td>CNPJ:</td>
+            <td><input type="text" name="cnpj" id="cnpj" value="{{ nota_fiscal.cnpj }}" required /></td>
+        </tr>
+        <tr>
+            <td>Endereço:</td>
+            <td><input type="text" name="endereco" id="endereco" value="{{ nota_fiscal.endereco }}" required /></td>
+        </tr>
+        <tr>
+            <td>Telefone:</td>
+            <td><input type="text" name="telefone" id="telefone" value="{{ nota_fiscal.telefone }}" required /></td>
+        </tr>
+        <tr>
+            <td>Data:</td>
+            <td><input type="date" name="data" id="data" value="{{ nota_fiscal.data }}" required /></td>
+        </tr>
+        <tr>
+            <td>Valor:</td>
+            <td><input type="text" name="valor" id="valor" value="{{ nota_fiscal.valor }}" required /></td>
+        </tr>
+        <tr>
+            <td>Itens:</td>
+            <td><textarea name="itens" id="itens" rows="6" cols="60" required>{{ nota_fiscal.itens }}</textarea></td>
+        </tr>
+    </table>
+
+    <br>
+    <input type="submit" value="Salvar Alterações" />
+    <button type="button" onclick="limparFormulario()">Limpar</button>
+</form>
+
+<script>
+function limparFormulario() {
+    document.querySelectorAll('input, textarea').forEach(function(element) {
+        if (element.type !== "submit" && element.type !== "button" && element.type !== "reset") {
+            element.value = '';
+        }
+    });
+    alert('Todos os campos foram limpos com sucesso!');
+}
+</script>
+
+{% endblock %}
+
